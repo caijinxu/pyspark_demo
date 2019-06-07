@@ -1,0 +1,15 @@
+两年前的项目，不包括具体业务内容，只做参考
+
+用pyspark做用户画像的启动程序
+两个程序一个跑历史数据，一个跑实时数据，可以同时跑，数据会自动合并到Hbase中。
+
+his.zip 跑历史数据程序
+运行命令：
+spark-submit --deploy-mode cluster --master yarn  --conf spark.storage.memoryFraction=0.4   --conf spark.shuffle.memoryFraction=0.3 --py-files his.zip his.py
+
+realtime_kafka.zip 跑实时数据程序
+运行命令：
+spark-submit  --deploy-mode cluster --master yarn --jars spark-streaming-kafka-0-8-assembly_2.11-2.2.0.jar --py-files realtime_kafka.zip realtime_kafka.py
+
+hadoop 资源管理器
+http://10.1.4.189:8088/cluster
